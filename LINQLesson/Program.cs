@@ -10,7 +10,13 @@ namespace LINQLesson {
 	class Program {
 
 		void RunExamplesFromChapter21() {
-
+			var students = StudentCollection.Select();
+			var AverageGPA = students.Where(s => s.SAT > 1000).Average(s => s.GPA);
+			Debug.WriteLine($"Average GPA is {AverageGPA}");
+			var StudentsCount = students.Where(s => s.SAT > 1000).Count();
+			Debug.WriteLine($"Count is {StudentsCount}");
+			StudentsCount = students.Where(s => s.GPA >= 2.5 && s.GPA <= 3.5).Count();
+			Debug.WriteLine($"Count students with GPA 2.5 < x < 3.5 is {StudentsCount}");
 		}
 		void RunStudentsWithMajorIdsLessThanFour() {
 			var students = StudentCollection.Select()
